@@ -2,8 +2,17 @@
 <html>
         <body>
 		<ul>
+			{% load sightings_tags %}
 			{% for squirrel in squirrels %}
-			<li><a href="{% url 'sightings:detail' squirrel.Unique_Squirrel_ID %}">{{ squirrel.Unique_Squirrel_ID}}</a></li>
+  				 {% for field in field_list %}
+     					 {{ squirrel|get_obj_attr:field }}
+  				 {% endfor %}
+			{% endfor %}
+		</ul>
+
+		<ul>
+			{% for field in field_list %}
+			{{ fielf }}
 			{% endfor %}
 		</ul>
 	</body>
