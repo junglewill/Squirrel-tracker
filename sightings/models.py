@@ -2,28 +2,33 @@ from django.db import models
 
 class Squirrel(models.Model):
 
-    Latitude = models.FloatField(null=True)
-    Longitude = models.FloatField(null=True)
-    Unique_Squirrel_ID = models.CharField(max_length=1000, null=True)
-    Shift = models.CharField(max_length=1000, null=True)
-    Date = models.DateField(null=True)
-    Age = models.CharField(max_length=1000, null=True)
-    Primary_Fur_Color = models.CharField(max_length=1000, null=True)
-    Location = models.CharField(max_length=1000, null=True)
-    Specific_Location = models.CharField(max_length=1000, null=True)
-    Running = models.BooleanField()
-    Chasing = models.BooleanField()
-    Climbing = models.BooleanField()
-    Eating = models.BooleanField()
-    Foraging = models.BooleanField()
-    Other_Activities = models.CharField(max_length=1000, null=True)
-    Kuks = models.BooleanField()
-    Quaas = models.BooleanField()
-    Moans = models.BooleanField()
-    Tail_Flags = models.BooleanField()
-    Tail_Twitches = models.BooleanField()
-    Approaches = models.BooleanField()
-    Indifferent = models.BooleanField()
-    Runs_From = models.BooleanField()
+    Latitude = models.FloatField(null=True,)
+    Longitude = models.FloatField(null=True,)
+    Unique_Squirrel_ID = models.CharField(max_length=1000, null=True,)
+    Shift = models.CharField(max_length=1000, null=True,)
+    Date = models.DateField(null=True,)
+    Age = models.CharField(max_length=1000, null=True,)
+    Primary_Fur_Color = models.CharField(max_length=1000, null=True,blank=True,)
+    Location = models.CharField(max_length=1000, null=True,blank=True,)
+    Specific_Location = models.CharField(max_length=1000, null=True,blank=True,)
+    Running = models.BooleanField(blank=True,)
+    Chasing = models.BooleanField(blank=True,)
+    Climbing = models.BooleanField(blank=True,)
+    Eating = models.BooleanField(blank=True,)
+    Foraging = models.BooleanField(blank=True,)
+    Other_Activities = models.CharField(max_length=1000, null=True, blank=True,)
+    Kuks = models.BooleanField(blank=True,)
+    Quaas = models.BooleanField(blank=True,)
+    Moans = models.BooleanField(blank=True,)
+    Tail_Flags = models.BooleanField(blank=True,)
+    Tail_Twitches = models.BooleanField(blank=True,)
+    Approaches = models.BooleanField(blank=True,)
+    Indifferent = models.BooleanField(blank=True,)
+    Runs_From = models.BooleanField(blank=True,)
+
+    def __str__(self):
+        return self.Unique_Squirrel_ID
+
+    
 
 # Create your models here.
