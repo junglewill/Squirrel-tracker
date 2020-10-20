@@ -7,5 +7,5 @@ def index(request):
             'squirrels': squirrels,
             }
 
-    return render(request, "map/index.html", {})
+    return render(request, "map/index.html", context)
 # Create your views here.
