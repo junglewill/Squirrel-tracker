@@ -5,44 +5,39 @@ import csv
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
-        parser.add_argument('/home/pl2775/2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv', nargs='+', type=str)
+        parser.add_argument('csv file', type=str)
 
     def handle(self, *args, **options):
-        for csv_file in options['/home/pl2775/2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv']:
-            dataReader = csv.reader(open(csv_file), delimiter=',', quotechar='"')
-            for row in dataReader:
-                squirrel = Squirrel()
-                squirrel.x = row[0]
-                squirrel.y = row[1]
-                squirrel.unique_squirrel_id = row[2]
-                squirrel.hectare = row[3]
-                squirrel.shift = row[4]
-                squirrel.date = row[5]
-                squirrel.hectare_squirrel_number = row[6]
-                squirrel.age = row[7]
-                squirrel.primary_fur_color = row[8]
-                squirrel.highlight_fur_color = row[9]
-                squirrel.combination_of_primary_and_highlight_color = row[10]
-                squirrel.color_notes = row[11]
-                squirrel.location = row[12]
-                squirrel.above_ground_sighter_measurement = row[13]
-                squirrel.specific_location = row[14]
-                squirrel.running = row[15]
-                squirrel.chasing = row[16]
-                squirrel.climbing = row[17]
-                squirrel.eating = row[18]
-                squirrel.foraging = row[19]
-                squirrel.other_activities = row[20]
-                squirrel.kuks = row[21]
-                squirrel.quaas = row[22]
-                squirrel.moans = row[23]
-                squirrel.tail_flags = row[24]
-                squirrel.tail_twitches = row[25]
-                squirrel.approaches = row[26]
-                squirrel.indifferent = row[27]
-                squirrel.runs_from = row[28]
-                squirrel.other_interactions = row[29]
-                squirrel.lat_long = row[30]
+        file_ = options['csv file']
+        with open(file_) as fp :
+            reader = csv.DictReader(fp)
+
+            for dict_ in reader:
+                obj = Squirrel()
+                obj.Longitude=dict_['Y']
+                obj.Unique_Squirrel_ID=dict_['Unique Squirrel ID']
+                obj.Shift=dict_['Shift']
+                obj.Date=dict_['Date'][4:]+'-'+dict_['Date'][:2]+'-'+dict_['Date'][2:4]
+                obj.Age=dict_['Age']
+                obj.Primary_Fur_Color=dict_['Primary Fur Color']
+                obj.Location=dict_['Location']
+                obj.Specific_Location=dict_['Specific Location']
+                obj.Running=True if dict_['Running'].lower() == 'true' else False
+                obj.Chasing=True if dict_['Chasing'].lower() == 'true' else False
+                obj.Climbing=True if dict_['Climbing'].lower() == 'true' else False
+                obj.Eating=True if dict_['Eating'].lower() == 'true' else False
+                obj.Foraging=True if dict_['Foraging'].lower() == 'true' else False
+                obj.Other_Activities=dict_['Other Activities']
+                obj.Kuks=True if dict_['Kuks'].lower() == 'true' else False
+                obj.Quaas=True if dict_['Quaas'].lower() == 'true' else False
+                obj.Moans=True if dict_['Moans'].lower() == 'true' else False
+                obj.Tail_Flags=True if dict_['Tail flags'].lower() == 'true' else False
+                obj.Tail_Twitches=True if dict_['Tail twitches'].lower() == 'true' else False
+                obj.Approaches=True if dict_['Approaches'].lower() == 'true' else False
+                obj.Indifferent=True if dict_['Indifferent'].lower() == 'true' else False
+                obj.Runs_From=True if dict_['Runs from'].lower() == 'true' else False
+                obj.save()
+
             msg = 'You are importing data...'    
             self.stdout.write(
                     self.style.SUCCESS(msg)
