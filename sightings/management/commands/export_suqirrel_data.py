@@ -10,53 +10,15 @@ class Command(BaseCommand):
         parser.add_argument('csv_file', type=open)
                                                           
     def handle(self, *args, **options):
-                                                          
+        field_list = [f.name for f in Squirrel._meta.get_fields()]                     
         with open('csv_file', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(['X', 
-                             'Y', 
-                             'Unique Squirrel ID', 
-                             'Shift', 
-                             'Date', 
-                             'Age', 
-                             'Primary Fur Color', 
-                             'Location', 
-                             'Specific Location', 
-                             'Running', 
-                             'Chasing', 
-                             'Climbing', 
-                             'Eating', 
-                             'Foraging', 
-                             'Other Activities', 
-                             'Kuks', 
-                             'Quaas', 
-                             'Moans', 
-                             'Tail Flags', 
-                             'Tail Twitches', 
-                             'Approaches', 
-                             'Indifferent', 
-                             'Runs From'])
+            writer.writerow(field_list)
                                                           
-            for obj in Squirrel.objects.all().values_list('Latitude', 
-                                                          'Longitude',
-                                                          'Unique_Squirrel_ID', 
-                                                          'Shift', 
-                                                          'Date', 
-                                                          'Age', 
-                                                          'Primary_Fur_Color', 
-                                                          'Location', 
-                                                          'Specific_Location', 
-                                                          'Running', 
-                                                          'Chasing', 
-                                                          'Climbing', 
-                                                          'Eating', 
-                                                          'Foraging', 
-                                                          'Other_Activities', 
-                                                          'Kuks', 
-                                                          'Quaas', 
-                                                          'Moans', 
-                                                          'Tail_Flags', 
-                                                          'Tail_Twitches', 
-                                                          'Approaches', 'Indifferent', 'Runs_From'):
-                writer.writerow([obj])
+            for obj in Squirrel.objects.all():
+                value_list = []
+                for f in field_list:
+                    value = getattr(obj, f)
+                    value_list.append(value)
+                writer.writerow(value_list)
             csvfile.close()
