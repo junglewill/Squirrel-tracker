@@ -15,7 +15,7 @@ class Command(BaseCommand):
         field_list = [f.name for f in Squirrel._meta.get_fields()]
         attr_list = ['Latitude', 'Longitude', 'Unique_Squirrel_ID', 'Shift', 'Date', 'Age', 'Primary_Fur_Color', 'Location', 'Specific_Location', 'Running', 'Chasing', 'Climbing', 'Eating', 'Foraging', 'Other_Activities', 'Kuks', 'Quaas', 'Moans', 'Tail_Flags', 'Tail_Twitches', 'Approaches', 'Indifferent', 'Runs_From']
         with open(file_, 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+            writer = csv.writer(csvfile)
             writer.writerow(field_list)
 
             squirrels = Squirrel.objects.all()
