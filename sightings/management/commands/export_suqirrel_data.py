@@ -7,18 +7,20 @@ class Command(BaseCommand):
     help = ("Exporting data to .csv")
                                                           
     def add_arguments(self, parser):
-        parser.add_argument('csv_file', type=open)
+        parser.add_argument('csv_file', type=str)
                                                           
     def handle(self, *args, **options):
-        field_list = [f.name for f in Squirrel._meta.get_fields()]                     
-        with open('csv_file', 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile)
+        file_=options['csv_file']
+
+        field_list = [f.name for f in Squirrel._meta.get_fields()]
+        attr_list = ['Latitude', 'Longitude', 'Unique_Squirrel_ID', 'Shift', 'Date', 'Age', 'Primary_Fur_Color', 'Location', 'Specific_Location', 'Running', 'Chasing', 'Climbing', 'Eating', 'Foraging', 'Other_Activities', 'Kuks', 'Quaas', 'Moans', 'Tail_Flags', 'Tail_Twitches', 'Approaches', 'Indifferent', 'Runs_From']
+        with open(file_, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
             writer.writerow(field_list)
+
+            squirrels = Squirrel.objects.all()
                                                           
-            for obj in Squirrel.objects.all():
-                value_list = []
-                for f in field_list:
-                    value = getattr(obj, f)
-                    value_list.append(value)
+            for obj in squirrels:
+                value_list = [getattr(obj, f) for f in attr_list]
                 writer.writerow(value_list)
-            csvfile.close()
+        csvfile.close()
