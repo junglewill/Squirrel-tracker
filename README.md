@@ -5,5 +5,4 @@ This is a website keeping track of all the known squirrels within Central Park, 
 
 
 # Data Source & Management Command
-The data source for this project is from <a href='https://opendata.cityofnewyork.us/'>NYC Open Data</a>. To import the data into the Django model, We'll use the following commands for importing data and exporting data in the terminal console:
-
+The data source for this project is from <a href='https://opendata.cityofnewyork.us/'>NYC Open Data</a>. To import the data into the Django model, We'll use the following commands for importing data and exporting data in the terminal console
