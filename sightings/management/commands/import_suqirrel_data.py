@@ -14,8 +14,8 @@ class Command(BaseCommand):
 
             for dict_ in reader:
                 obj = Squirrel()
-                obj.Latitude=dict_['X']
                 obj.Longitude=dict_['Y']
+                obj.Latitude=dict_['X']
                 obj.Unique_Squirrel_ID=dict_['Unique Squirrel ID']
                 obj.Shift=dict_['Shift']
                 obj.Date=dict_['Date'][4:]+'-'+dict_['Date'][:2]+'-'+dict_['Date'][2:4]

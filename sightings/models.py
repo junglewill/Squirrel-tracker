@@ -2,8 +2,8 @@ from django.db import models
 
 class Squirrel(models.Model):
 
-    Latitude = models.FloatField(null=True,)
-    Longitude = models.FloatField(null=True,)
+    Latitude = models.FloatField(blank=False,) 
+    Longitude = models.FloatField(blank=False,)
     Unique_Squirrel_ID = models.CharField(max_length=1000, null=True,)
     Shift = models.CharField(max_length=1000, null=True,)
     Date = models.DateField(null=True,)
