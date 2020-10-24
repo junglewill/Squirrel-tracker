@@ -12,8 +12,8 @@ def index(request):
     field_list = [field.name for field in Squirrel._meta.get_fields()]
     return render(request, "sightings/index.html", context)
 
-def squirrel_details(request, squirrel_id):
-    squirrel = get_object_or_404(Squirrel, pk=squirrel_id)
+def squirrel_details(request, Unique_Squirrel_ID):
+    squirrel = get_object_or_404(Squirrel, pk=Unique_Squirrel_ID)
 
     context = {
         'squirrel': squirrel,
