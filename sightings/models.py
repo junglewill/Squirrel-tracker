@@ -5,9 +5,16 @@ class Squirrel(models.Model):
     Latitude = models.FloatField(blank=False,) 
     Longitude = models.FloatField(blank=False,)
     Unique_Squirrel_ID = models.CharField(max_length=1000,blank=False, primary_key=True,)
-    Shift = models.CharField(max_length=1000, null=True,)
-    Date = models.DateField(null=True,)
-    Age = models.CharField(max_length=1000, null=True,)
+    Shift = models.CharField(max_length=1000, null=True,blank=False,)
+    Date = models.DateField(null=True,blank=False,)
+    ADULT = 'adult'
+    JUVENILE = 'juvenile'
+
+    AGE_CHOICES = [
+        (ADULT, 'Adult'),
+        (JUVENILE, 'Juvenile'),
+    ]
+    Age = models.CharField(max_length=1000, null=True,choices=AGE_CHOICES,default=ADULT,)
     Primary_Fur_Color = models.CharField(max_length=1000, null=True,blank=True,)
     Location = models.CharField(max_length=1000, null=True,blank=True,)
     Specific_Location = models.CharField(max_length=1000, null=True,blank=True,)
