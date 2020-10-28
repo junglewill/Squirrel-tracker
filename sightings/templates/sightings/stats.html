@@ -68,23 +68,23 @@
             <tbody>
             <tr>
                 <td>Total Squirrel Sightings</td>
-                <td>1</td>
+		<td>{{ count }}</td>
             </tr>
             <tr>
                 <td>Average Latitude</td>
-                <td>1</td>
+                <td>{{ latitude_avg }}</td>
             </tr>
             <tr>
                 <td>Average Longitude</td>
-                <td>1</td>
+                <td>{{ longitude_avg }}</td>
             </tr>
             <tr>
                 <td>Age Count</td>
-                <td>1</td>
+		<td>Adult: {{ adult }} | Juvenile: {{ juvenile }}</td>
             </tr>
             <tr>
                 <td>Running Count</td>
-                <td>1</td>
+		<td>True: {{ run_true }} | False: {{ run_false }}</td>
             </tr>
             </tbody>
         </table>

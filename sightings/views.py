@@ -40,4 +40,46 @@ def add(request):
             return JsonResponse({'errors': form.errors}, status=400)
     return render(request, 'sightings/add.html', {})
 
+def stats(request):
+    squirrels = Squirrel.objects.all()
+    count = 0
+    latitude = 0
+    longitude = 0
+    adult = 0
+    juvenile = 0
+    run_true = 0
+    run_false = 0
+    for squirrel in squirrels:
+        count += 1
+        latitude1 = getattr(squirrel, 'Latitude')
+        latitude += latitude1
+        longitude1 = getattr(squirrel, 'Longitude')
+        longitude += longitude1
+        age1 = getattr(squirrel, 'Age')
+        if age1 == 'Adult':
+            adult += 1
+        elif age1 == 'Juvenile':
+            juvenile += 1
+        else:
+            pass
+        running1 = getattr(squirrel, 'Running')
+        if running1 == True:
+            run_true += 1
+        elif running1 == False:
+            run_false += 1
+        else:
+            pass
+    
+    latitude_avg = latitude/count
+    longitude_avg = longitude/count
+    context = {
+            'count': count,
+            'latitude_avg': latitude_avg,
+            'longitude_avg': longitude_avg,
+            'adult': adult,
+            'juvenile': juvenile,
+            'run_true': run_true,
+            'run_false': run_false,
+            }
+    return render(request, "sightings/stats.html", context)
 # Create your views here.
