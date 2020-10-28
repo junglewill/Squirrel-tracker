@@ -15,17 +15,21 @@ Through running these commands, The database(sqlite) will be constructed with th
 # Web Application Functions
 
 ## Home page 
-#### Located at sightings/
+#### Located at /sightings/
 Showing all the squirrel data in the database, with a button of <b>```View Details```</b> to check the detailed information of a specific squirrel
 
 ## Details
-#### Located at sightings/Unique_Squirrel_ID/
+#### Located at /sightings/Unique_Squirrel_ID/
 Displaying the detailed information of a specific squirrel, and followed with a blank field to update some certain values of the squirrel
 
 ## Add
-#### Located at sightings/add/
+#### Located at /sightings/add/
 Adding new data to the database, with blank field to insert value and add
 
 ## Map
-#### Located at map/
+#### Located at /map/
 Plotting the first 100 rows of squirrel data on the map based on their latitude and longitude data
+
+## Statistics
+#### Located at /sightings/stats
+Calculating general statistics information for the database
