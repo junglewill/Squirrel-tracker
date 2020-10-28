@@ -50,14 +50,16 @@
       </div>
     </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style='border: 1px solid black'>
+	<div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+	<div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+	<div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-stretch pt-3 pb-2 mb-3 border-bottom">
       <head>Squirrel Data</head>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
-            <div class="navbar-brand col-sm-3 col-md-2 mr-0" id="myChart" style="width:100%"></div>
-                 <tr>
+            	<tr>
                 <th></th>
                 <th>Detail</th>
                 
@@ -104,6 +106,7 @@
                 <td><input type="text"
                name="Date"
                class="form-control"
+	       placeholder="yyyy-mm-dd"
                aria-label="Date"/>
                 </td>
             </tr>
