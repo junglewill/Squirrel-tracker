@@ -28,7 +28,7 @@ def add_squirrel(request):
         form = AddNewForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'sightings/add.html', {})
+            return JsonResponse({})
         else:
             return JsonResponse({'errors': form.errors}, status=400)
     return JsonResponse({})
