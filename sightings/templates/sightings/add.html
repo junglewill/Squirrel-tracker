@@ -52,7 +52,7 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <head>Squirrel Data</head>
+	<head>Squirrel Data</head>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -65,7 +65,7 @@
             </thead>
             <tbody>
             <form id="submit" method="post" action="{% url 'sightings:request' %}" class="input-group mb-3">
-            {% csrf_token %}   
+           {% csrf_token %}    
             <tr>
                 <td>Unique Squirrel ID</td>
                 <td><input type="text"
@@ -104,6 +104,7 @@
                 <td><input type="text"
                name="Date"
                class="form-control"
+	       placeholder="yyyy-mm-dd"
                aria-label="Date"/>
                 </td>
             </tr>
@@ -167,6 +168,104 @@
                aria-label="Climbing"/>
                 </td>
             </tr>
+	    <tr>
+                <td>Eating</td>
+                <td><input type="text"
+               name="Eating"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Eating"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Foraging</td>
+                <td><input type="text"
+               name="Foraging"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Foraging"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Other_Activities</td>
+                <td><input type="text"
+               name="Other_Activities"
+               class="form-control"
+               aria-label="Other_Activities"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Kuks</td>
+                <td><input type="text"
+               name="Kuks"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Kuks"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Quaas</td>
+                <td><input type="text"
+               name="Quaas"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Quaas"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Moans</td>
+                <td><input type="text"
+               name="Moans"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Moans"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Tail_Flags</td>
+                <td><input type="text"
+               name="Tail_Flags"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Tail_Flags"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Tail_Twitches</td>
+                <td><input type="text"
+               name="Tail_Twitches"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Tail_Twitches"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Approaches</td>
+                <td><input type="text"
+               name="Approaches"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Approaches"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Indifferent</td>
+                <td><input type="text"
+               name="Indifferent"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Indifferent"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Runs_From</td>
+                <td><input type="text"
+               name="Runs_From"
+               class="form-control"
+               placeholder="True/False"
+               aria-label="Runs_From"/>
+                </td>
+            </tr>
             <tr>
                 <td>Finished</td>
                 <td><div class="input-group-append">
@@ -196,3 +295,88 @@
     -->
   </body>
 </html>
+<!--.
+{% block extra_footer %}
+  <script>
+    function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+      }
+    });
+
+    $("#submit").submit(function(event) {
+      event.preventDefault();
+
+      var Unique_Squirrel_ID = $('input[name=Unique_Squirrel_ID]').val();
+      var Latitude = $('input[name=Latitude]').val();
+      var Longitude = $('input[name=Longitude]').val();
+        var Shift = $('input[name=Shift]').val();
+        var Date1 = $('input[name=Date]').val();
+        var Age = $('input[name=Age]').val();
+        var Primary_Fur_Color = $('input[name=Primary_Fur_Color]').val();
+        var Location1 = $('input[name=Location]').val();
+        var Specific_Location = $('input[name=Specific_Location]').val();
+        var Running = $('input[name=Running]').val();
+        var Chasing = $('input[name=Chasing]').val();
+        var Climbing = $('input[name=Climbing]').val();
+        var Eating = $('input[name=Eating]').val();
+        var Foraging = $('input[name=Foraging]').val();
+        var Other_Activities = $('input[name=Other_Activities]').val();
+        var Kuks = $('input[name=Kuks]').val();
+        var Quaas = $('input[name=Quaas]').val();
+        var Moans = $('input[name=Moans]').val();
+        var Tail_Flags = $('input[name=Tail_Flags]').val();
+        var Tail_Twitches = $('input[name=Tail_Twitches]').val();
+        var Approaches = $('input[name=Approaches]').val();
+        var Indifferent = $('input[name=Indifferent]').val();
+        var Runs_From = $('input[name=Runs_From]').val();
+      $.post({
+        url: "{% url 'sightings:request' %}",
+        data: {
+          Unique_Squirrel_ID: Unique_Squirrel_ID,
+            Latitude: LatitudeD,
+            Longitude: Longitude,
+            Shift: Shift,
+            Date: Date1,
+            Age: Age,
+            Primary_Fur_Colo: Primary_Fur_Color,
+            Location: Location1,
+            Specific_Location: Specific_Location,
+            Running: Running,
+            Chasing: Chasing,
+            Climbing:Climbing,
+            Eating:Eating,
+            Foraging:Foraging,
+            Other_Activities:Other_Activities,
+            Kuks:Kuks,
+            Quaas:Quaas,
+            Moans:Moans,
+            Tail_Flags:Tail_Flags,
+            Tail_Twitches:Tail_Twitches,
+            Approaches:Approaches,
+            Indifferent:Indifferent,
+            Runs_From:Runs_From,
+
+        },
+        dataType: "json",
+      }).done(function(response) {
+        $("#submit").html('You have added to the database'');
+      }).fail(function(response) {
+        if (response.statusText === "error") {
+          var errors = "Oops, looks like an error on our side. Please try again later.";
+        } else {
+          var errors = response.responseJSON.errors.adopter;
+        }
+        $("#submit").html(errors);
+      });
+    });
+  </script>
+  {% endblock %}<-->

@@ -28,10 +28,13 @@ def add_squirrel(request):
         form = AddNewForm(request.POST)
         if form.is_valid():
             form.save()
-            return JsonResponse({})
+            return render(request, 'sightings/add.html', {})
         else:
             return JsonResponse({'errors': form.errors}, status=400)
-
     return JsonResponse({})
+
+def add(request):
+    return render(request, 'sightings/add.html', {})
+
 
 # Create your views here.
