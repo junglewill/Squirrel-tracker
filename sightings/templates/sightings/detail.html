@@ -63,104 +63,161 @@
                  <tr>
                 <th></th>
                 <th>Detail</th>
+                     <th>Update</th>
                 
             </tr>
             </thead>
             <tbody>
+            <form id="submit" method="post" action="{% url 'sightings:details' squirrel.Unique_Squirrel_ID %}" class="input-group mb-3">
+            {% csrf_token %} 
             <tr>
-                <td>Unique_Squirrel_ID</td>
+                <td>Unique Squirrel ID</td>
+                <td>{{ squirrel.Unique_Squirrel_ID }}</td>
                 <td>{{ squirrel.Unique_Squirrel_ID }}</td>
             </tr>
             <tr>
                 <td>Latitude</td>
                 <td>{{ squirrel.Latitude }}</td>
+                <td><input type="text"
+               name="Latitude"
+               class="form-control"
+               aria-label="Latitude"/>
+                </td>
             </tr>
             <tr>
                 <td>Longitude</td>
                 <td>{{ squirrel.Longitude }}</td>
+                <td><input type="text"
+               name="Longitude"
+               class="form-control"
+               aria-label="Longitude"/>
+                </td>
             </tr>
             <tr>
                 <td>Shift</td>
                 <td>{{ squirrel.Shift }}</td>
+                <td><input type="text"
+               name="Shift"
+               class="form-control"
+               placeholder="AM/PM"
+               aria-label="Shift"/>
+                </td>
             </tr>
             <tr>
                 <td>Date</td>
                 <td>{{ squirrel.Date }}</td>
+                <td><input type="text"
+               name="Date"
+               class="form-control"
+               aria-label="Date"/>
+                </td>
             </tr>
             <tr>
                 <td>Age</td>
                 <td>{{ squirrel.Age }}</td>
+                <td><input type="text"
+               name="Age"
+               class="form-control"
+               placeholder="Adult/Juvenile"
+               aria-label="Age"/>
+                </td>
             </tr>
             <tr>
                 <td>Primary Fur Color</td>
+                <td>{{ squirrel.Primary_Fur_Color }}</td>
                 <td>{{ squirrel.Primary_Fur_Color }}</td>
             </tr>
             <tr>
                 <td>Location</td>
                 <td>{{ squirrel.Location }}</td>
+                <td>{{ squirrel.Location }}</td>
             </tr>
             <tr>
                 <td>Specific Location</td>
+                <td>{{ squirrel.Specific_Location }}</td>
                 <td>{{ squirrel.Specific_Location }}</td>
             </tr>
             <tr>
                 <td>Running</td>
                 <td>{{ squirrel.Running }}</td>
+                <td>{{ squirrel.Running }}</td>
             </tr>
             <tr>
                 <td>Chasing</td>
+                <td>{{ squirrel.Chasing }}</td>
                 <td>{{ squirrel.Chasing }}</td>
             </tr>
             <tr>
                 <td>Climbing</td>
                 <td>{{ squirrel.Climbing }}</td>
+                <td>{{ squirrel.Climbing }}</td>
             </tr>
             <tr>
                 <td>Eating</td>
+                <td>{{ squirrel.Eating }}</td>
                 <td>{{ squirrel.Eating }}</td>
             </tr>
             <tr>
                 <td>Foraging</td>
                 <td>{{ squirrel.Foraging }}</td>
+                <td>{{ squirrel.Foraging }}</td>
             </tr>
             <tr>
                 <td>Other Activities</td>
+                <td>{{ squirrel.Other_Activities }}</td>
                 <td>{{ squirrel.Other_Activities }}</td>
             </tr>
             <tr>
                 <td>Kuks</td>
                 <td>{{ squirrel.Kuks }}</td>
+                <td>{{ squirrel.Kuks }}</td>
             </tr>
             <tr>
                 <td>Quaas</td>
+                <td>{{ squirrel.Quaas }}</td>
                 <td>{{ squirrel.Quaas }}</td>
             </tr>
             <tr>
                 <td>Moans</td>
                 <td>{{ squirrel.Moans }}</td>
+                <td>{{ squirrel.Moans }}</td>
+                
             </tr>
             <tr>
                 <td>Tail Flags</td>
+                <td>{{ squirrel.Tail_Flags }}</td>
                 <td>{{ squirrel.Tail_Flags }}</td>
             </tr>
             <tr>
                 <td>Tail Twitches</td>
                 <td>{{ squirrel.Tail_Twitches }}</td>
+                <td>{{ squirrel.Tail_Twitches }}</td>
             </tr>
             <tr>
                 <td>Approaches</td>
+                <td>{{ squirrel.Approaches }}</td>
                 <td>{{ squirrel.Approaches }}</td>
             </tr>
             <tr>
                 <td>Indifferent</td>
                 <td>{{ squirrel.Indifferent }}</td>
+                <td>{{ squirrel.Indifferent }}</td>
             </tr>
             <tr>
                 <td>Runs From</td>
                 <td>{{ squirrel.Runs_From }}</td>
+                <td>{{ squirrel.Runs_From }}</td>
             </tr>
-            
-
+             <tr>
+                <td></td>
+                 <td></td>
+                <td><div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Update</button>
+                    </div>
+                    <div id="errors" class="mb-3"></div>
+                </td>
+            </tr>
+            </form>
             </tbody>
         </table>
       </div>
