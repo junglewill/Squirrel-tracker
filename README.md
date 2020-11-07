@@ -20,7 +20,7 @@ Showing all the squirrel data in the database, with a button of <b>```View Detai
 
 ### Details
 #### Located at /sightings/Unique_Squirrel_ID/
-Displaying the detailed information of a specific squirrel, and followed with a blank field to update some certain values of the squirrel
+Displaying the detailed information of a specific squirrel, and followed with blank fields to update some certain values of the squirrel. You can  click the button of <b>```Update```</b> to do this.
 
 ### Add
 #### Located at /sightings/add/
